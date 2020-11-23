@@ -1,0 +1,99 @@
+html,body{
+    margin:0px;
+    height:100%;
+    background-image:url('http://www.formosasoftwarefactory.com/images/header-background.jpg');
+    background-size: cover;
+    background-repeat:no-repeat;
+    background-color: #5f5bfa;
+    overflow-x: hidden;
+    }
+h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 33px;
+    font-weight: 900;
+    color: #fff
+}
+
+h4{
+    color: #fff;
+    font-size: 50px;
+    font-weight: 800;
+}
+
+h5{
+    color: #fff;
+    font-size: 35px;
+    font-weight: 800;
+}
+
+.p-large{
+    color: #fff;
+    font-weight: 500;
+    font-size: 25px;
+}
+
+.header-content{
+    /* background-image: linear-gradient(to right top, #051937, #123460, #1b528c, #1e73ba, #1296eb); */
+    padding-top: 8em;
+    width: 100vw;
+    height: 100vh;
+    /* position: fixed; */
+    max-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.Contenido{
+    display: flex;
+    flex-direction: column;
+}
+
+.imagenpremio{
+    margin: 8px;
+    padding: 1em;
+}
+
+.text-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo{
+    padding: 1em;
+    padding-bottom: 10px;
+}
+
+.botonespacio{
+    margin-top: 4em;
+    margin-bottom: 8em;
+}
+
+.btn-primary{
+    background-color:#a9d42d ;
+}
+
+@media screen and (max-width:768px){
+    .text-container{
+        flex-direction: column;
+    }
+    .header-content{
+        padding-top: 44em;
+        width: 100%;
+        height: 100%;
+    }
+
+    body{
+        background-image:url('http://www.formosasoftwarefactory.com/images/header-background-vertical.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-color: #5f5bfa;
+        
+
+    }
+
+}
