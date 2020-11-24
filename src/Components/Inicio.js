@@ -1,12 +1,17 @@
 import React, { Fragment, useState, useEffect } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
 import "./Inicio.css";
 
 function Inicio({ name = "leer" }) {
   const path = 'http://www.formosasoftwarefactory.com/panel/principal/imagenpanel';
   //Array de datos para Iterar
-  const [datos, setDatos] = useState([]);
-  const [datoss,setDatoss] = useState([]);
+  //const [datos, setDatos] = useState([]);
+  const [datoss,setDatoss] = useState({
+    loading:true,
+    error:null,
+    datoss:{
+      results:[],
+    },
+  });
   //Guardo en valores separados para su facil manejo
   const [tipo, setTipo] = useState("Trivia");
   const [NombreDesafio, setNombreDesafio] = useState("");
@@ -26,80 +31,60 @@ function Inicio({ name = "leer" }) {
     const url =
       "http://formosasoftwarefactory.com/desafioapi/procesar.php?=${name}";
     //Fetch para leer el JSON de respuesta
-
+    
     const fetchDatos = async () =>{
-      const response= await fetch(url);
-      const datoss = await response.json();
-      setDatoss(datoss);  
-      datoss.forEach((Element) => {
-        const {
-          Tipo,
-          Nombre,
-          FechaInicio,
-          FechaFin,
-          Objetivo,
-          Instrucciones,
-          Premios,
-          img1,
-          img2,
-          img3,
-          Link,
-        } = Element;
-        setTipo(Tipo);
-        setNombreDesafio(Nombre);
-        setFechaInicio(FechaInicio);
-        setFechaFin(FechaFin);
-        setObjetivo(Objetivo);
-        setInstrucciones(Instrucciones);
-        setPremios(Premios);
-        setimg1(img1);
-        setimg2(img2);
-        setimg3(img3);
-        setLink(Link);
-      });  
+      setDatoss({loading:true, error:null});
+      try{   
+          const response= await fetch(url);
+          const datoss = await response.json();
+          setDatoss({loading:false,datoss:datoss,});  
+        
+          datoss.forEach((Element) => {
+            const {
+              Tipo,
+              Nombre,
+              FechaInicio,
+              FechaFin,
+              Objetivo,
+              Instrucciones,
+              Premios,
+              img1,
+              img2,
+              img3,
+              Link,
+            } = Element;
+            setTipo(Tipo);
+            setNombreDesafio(Nombre);
+            setFechaInicio(FechaInicio);
+            setFechaFin(FechaFin);
+            setObjetivo(Objetivo);
+            setInstrucciones(Instrucciones);
+            setPremios(Premios);
+            setimg1(img1);
+            setimg2(img2);
+            setimg3(img3);
+            setLink(Link);
+          });  
+        }catch(error){
+          setDatoss({loading:false,error:error,});  
+        }
     }
+    
     fetchDatos();
-    // fetch(url)
-    //   .then((response) => response.json())
-    //   .then((datos) => {
-    //     //llamo al metodo que modifica los datos
-    //     setDatos(datos);
-    //     //Itero Sobre datos y guardo los valores
-    //     datos.forEach((Element) => {
-    //       const {
-    //         Tipo,
-    //         Nombre,
-    //         FechaInicio,
-    //         FechaFin,
-    //         Objetivo,
-    //         Instrucciones,
-    //         Premios,
-    //         img1,
-    //         img2,
-    //         img3,
-    //         Link,
-    //       } = Element;
-    //       setTipo(Tipo);
-    //       setNombreDesafio(Nombre);
-    //       setFechaInicio(FechaInicio);
-    //       setFechaFin(FechaFin);
-    //       setObjetivo(Objetivo);
-    //       setInstrucciones(Instrucciones);
-    //       setPremios(Premios);
-    //       setimg1(img1);
-    //       setimg2(img2);
-    //       setimg3(img3);
-    //       setLink(Link);
-    //     });
-    //  });
+  
   }, [name]);
+  if(datoss.error){
+    return `Error: ${datoss.error.message}`;
+  }
   return (
     <Fragment>
+      {datoss.loading &&(<div className='loader'><h3>CARGANDO...</h3></div>)}
+      
       <div className="header-content">
         <div className="container">
           <div className="text-container">
             <div>
-              <h1>Hola Bienvenido {tipo}</h1>
+              <h1>{tipo}</h1>
             </div>
             <div className="logo">
               <img src={`${path}/${img1}`} alt="Imagen Logo" height='70px' ></img>

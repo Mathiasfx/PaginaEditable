@@ -1,7 +1,9 @@
 import React,{Fragment} from 'react';
 import {BrowserRouter as Router, Switch, Route,Link} from 'react-router-dom';
 import Inicio from './Components/Inicio';
-import './App.css';
+import Evento from './Evento';
+import PaginaNew from'./pages/PaginaNew';
+
 
 
 
@@ -12,7 +14,8 @@ function App() {
        <Switch>        
           <Route exact path='/' render={()=>(window.location = "http://www.formosasoftwarefactory.com")}/>          
           <Route path='/Juego' exact component={Inicio} />
-          
+          <Route path='/Evento' exact component={Evento} />   
+          <Route path='/Formulario' exact component={PaginaNew} />           
         </Switch>
        </Router>
     </Fragment>
