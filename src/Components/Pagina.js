@@ -3,7 +3,8 @@ import "./styles/Pagina.css";
 
 function Pagina({tipo,NombreDesafio,FechaInicio,FechaFin,Objetivo,Instrucciones,Premios,img1,img2,img3,Link}) {
   const path =
-    "http://www.formosasoftwarefactory.com/panel/principal/imagenpanel";
+    "";
+    //http://www.formosasoftwarefactory.com/panel/principal/imagenpanel
   return (
     <Fragment>
       <div className="container">
