@@ -2,7 +2,7 @@ import React, { Fragment, useState, useEffect } from "react";
 import "./Inicio.css";
 
 function Inicio({ name = "leer" }) {
-  const path = 'http://www.formosasoftwarefactory.com/panel/principal/imagenpanel';
+  //const path = 'http://www.formosasoftwarefactory.com/panel/principal/imagenpanel';
   //Array de datos para Iterar
   //const [datos, setDatos] = useState([]);
   const [datoss,setDatoss] = useState({
@@ -28,8 +28,7 @@ function Inicio({ name = "leer" }) {
   //Evito el Loop infinito y solo llamo cuando carga la aplicacion
   useEffect(() => {    //Url Api me devuelve un JSON
 
-    const url =
-      "http://formosasoftwarefactory.com/desafioapi/procesar.php?=${name}";
+    const url ="http://formosasoftwarefactory.com/desafioapi/procesar.php?action=leer";
     //Fetch para leer el JSON de respuesta
     
     const fetchDatos = async () =>{
@@ -87,7 +86,8 @@ function Inicio({ name = "leer" }) {
               <h1>{tipo}</h1>
             </div>
             <div className="logo">
-              <img src={`${path}/${img1}`} alt="Imagen Logo" height='70px' ></img>
+            {/* `${path}/${img1}` */}
+              <img src={img1} alt="Imagen Logo" height='70px' ></img>
             </div>
           </div>
           <div className="contenido">
@@ -98,8 +98,8 @@ function Inicio({ name = "leer" }) {
             <p className="p-large">{Objetivo}</p>
             <p className="p-large">{Instrucciones}</p>
             <p className="p-large">{Premios}</p>
-            <img className='imagenpremio' src={`${path}/${img2}`} alt="Imagen Premio" height='170px'></img>
-            <img className='imagenpremio' src={`${path}/${img3}`} alt="Imagen Premio" height='170px'></img>
+            <img className='imagenpremio' src={img2} alt="Imagen Premio" height='170px'></img>
+            <img className='imagenpremio' src={img3} alt="Imagen Premio" height='170px'></img>
             <div className='botonespacio'>
             <a
               href={Link}
