@@ -35,11 +35,11 @@ function Formulario({ onChange, form }) {
               ></input>
             </div>
             <div className="col-xs-12 col-md-6">
-              <label> URL imagen logo</label>
+              <label>imagen logo</label>
               <input
                 onChange={onChange}
                 className="form-control"
-                type="text"
+                type="file"
                 name="img1"
                 value={form.img1}
               ></input>
@@ -113,9 +113,9 @@ function Formulario({ onChange, form }) {
         <div className="form-group">
           <div className="row">
             <div className="col-xs-12 col-md-6">
-              <label>Url Imagen Premio 1</label>
+              <label>Imagen Premio 1</label>
               <input
-                type="text"
+                type="file"
                 onChange={onChange}
                 className="form-control"
                 name="img2"
@@ -123,9 +123,9 @@ function Formulario({ onChange, form }) {
               ></input>
             </div>
             <div className="col-xs-12 col-md-6">
-              <label>Url Imagen Premio 2</label>
+              <label>Imagen Premio 2</label>
               <input
-                type="text"
+                type="file"
                 onChange={onChange}
                 className="form-control"
                 name="img3"
