@@ -1,10 +1,14 @@
-import React from 'react'
+import React,{Fragment} from 'react'
+import Tomiframe from '../Components/Tomiframe'
 
 function Iframe() {
     return (
-        <div>
-            <h1>El Iframe aqui</h1>
-        </div>
+        <Fragment>
+            <Tomiframe
+                Link='4026'            
+            />
+           
+        </Fragment>
     )
 }
 

@@ -9,6 +9,7 @@ function PaginaNew() {
 
       //Iniciar internamente los valores
 const [form,setform] = useState({
+  fondo:'',
   tipo:'',
   NombreDesafio:'',
   FechaInicio:'',
@@ -31,12 +32,14 @@ const [form,setform] = useState({
 
   return (
     <Fragment>
+      <style>{'#root { background-color: #fff; }'}</style>
       <Navbar />
       <div className="container-fluid">
         
         <div className="row">
           <div className="col-xs-12 col-md-8">
             <Pagina
+             fondo={form.fondo} 
              tipo={form.tipo}
              NombreDesafio={form.NombreDesafio}
              FechaInicio={form.FechaInicio}            
