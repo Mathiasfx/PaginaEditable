@@ -3,10 +3,11 @@ import "./styles/Pagina.css";
 import emptyimg from '../Components/images/logoEmpty.png';
 import emptypremio from '../Components/images/PremioEmpty.png';
 
-function Pagina({tipo,NombreDesafio,FechaInicio,FechaFin,Objetivo,Instrucciones,Premios,img1,img2,img3,Link}) {
-  const path ="/iframe";
-    //definir una constante para trabajar con la cadena de texto https://play.tomi.digital/auth?code=
-    const Premioss = Premios;    
+function Pagina({fondo,tipo,NombreDesafio,FechaInicio,FechaFin,Objetivo,Instrucciones,Premios,img1,img2,img3,Link}) {
+  const path ="https://play.tomi.digital/auth?code=";
+    //definir una constante para trabajar con la cadena de texto /Iframe https://play.tomi.digital/auth?code=
+    const Premioss = Premios; 
+    const fondob = fondo;   
     //Separar la cadena de Premios y dividirlos por ", " Comas
     const ArrayPremio = Premioss.split(",");    
     //Crea la Lista utilizando un Map
@@ -16,11 +17,9 @@ function Pagina({tipo,NombreDesafio,FechaInicio,FechaFin,Objetivo,Instrucciones,
     return imprimir;
   }    
 
-  
-
   return (
     <Fragment>
-      <style>{'body { background-color: #242424; }'}</style>
+      <style>{`body { background-color:${fondob};}`}</style>
       <div className="container">
         <div className="pagina">
           <div className="header"></div>
@@ -64,7 +63,7 @@ function Pagina({tipo,NombreDesafio,FechaInicio,FechaFin,Objetivo,Instrucciones,
           </div>
           <div className="parabutton">
             <a
-              href={`${path}`}
+              href={`${path}${Link}`}
               className="btn btn-primary"
               role="button"
               aria-pressed="true"

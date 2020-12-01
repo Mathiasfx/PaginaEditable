@@ -12,6 +12,7 @@ function Evento(name = "leer") {
       },
     });
     //Guardo en valores separados para su facil manejo
+    const [fondo,setfondo] = useState("");
     const [tipo, setTipo] = useState("");
     const [NombreDesafio, setNombreDesafio] = useState("");
     const [FechaInicio, setFechaInicio] = useState("");
@@ -37,6 +38,7 @@ function Evento(name = "leer") {
             setdatas({loading:false,data:datas,});            
             datas.forEach((Element) => {
               const {
+                fondo,
                 Tipo,
                 Nombre,
                 FechaInicio,
@@ -49,6 +51,7 @@ function Evento(name = "leer") {
                 img3,
                 Link,
               } = Element;
+              setfondo(fondo);
               setTipo(Tipo);
               setNombreDesafio(Nombre);
               setFechaInicio(FechaInicio);
@@ -77,6 +80,7 @@ function Evento(name = "leer") {
             <Fragment>
                 {datas.loading &&(<div className='loader'><h3>CARGANDO...</h3></div>)} 
                 <Pagina
+                    fondo={fondo}
                     tipo={tipo}
                     NombreDesafio={NombreDesafio}
                     FechaInicio={FechaInicio}

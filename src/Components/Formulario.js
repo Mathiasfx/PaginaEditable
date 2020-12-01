@@ -23,6 +23,21 @@ function Formulario({ onChange, form }) {
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <div className="row">
+          <div className="col-xs-12 col-md-6">
+            <label>Color de Fondo Pagina <small>Hexadecimal</small></label>
+            <input
+                onChange={onChange}
+                className="form-control"
+                type="text"
+                placeholder="#FF5733"
+                name="fondo"
+                value={form.fondo}
+              ></input>
+          </div>
+
+          </div>
+          <div className="row">
+            
             <div className="col-xs-12 col-md-6">
               {" "}
               <label> Mensaje Bienvenida</label>
