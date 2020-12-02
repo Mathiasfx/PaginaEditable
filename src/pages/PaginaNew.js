@@ -25,8 +25,8 @@ const [form,setform] = useState({
 
     const handleChange = e =>{
         setform({
-          ...form,
-          [e.target.name]: e.target.value,
+          ...form,         
+          [e.target.name]: e.target.value,          
          });
      };
 

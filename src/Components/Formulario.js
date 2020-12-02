@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import axios from "axios";
 
 
+
 function Formulario({ onChange, form }) {
   //Enviar
   const handleSubmit = (e) => {
     e.preventDefault();
      axios
       .post(
-        "http://www.fsf.com.ar/principal/formulario.php",
-       form)
+        "http://www.fsf.com.ar/principal/formulario.php",form)
         .then((response) => {
         console.log(response, form);
       })
@@ -17,27 +17,29 @@ function Formulario({ onChange, form }) {
         console.log(console.log(error));
       });
   };
+
+  const [imagen1,setImagen1] = useState('');
+
+  function HandleFile(e){
+    setImagen1(e.target.files[0]);  
+    fileUploader();
+  }
+
+  const fileUploader = () =>{
+    // axios.post()
+    console.log(imagen1.name);
+  }
+
+
+
+
   return (
     <div className="forcontenedor">
       <h1>Edicion</h1>
       <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <div className="row">
-          <div className="col-xs-12 col-md-6">
-            <label>Color de Fondo Pagina <small>Hexadecimal</small></label>
-            <input
-                onChange={onChange}
-                className="form-control"
-                type="text"
-                placeholder="#FF5733"
-                name="fondo"
-                value={form.fondo}
-              ></input>
-          </div>
-
-          </div>
-          <div className="row">
-            
+        <div className="form-group">      
+         
+          <div className="row">            
             <div className="col-xs-12 col-md-6">
               {" "}
               <label> Mensaje Bienvenida</label>
@@ -51,12 +53,11 @@ function Formulario({ onChange, form }) {
             </div>
             <div className="col-xs-12 col-md-6">
               <label>imagen logo</label>
+       
               <input
-                onChange={onChange}
-                className="form-control"
-                type="file"
-                name="img1"
-                value={form.img1}
+                onChange={HandleFile}
+                className="form-control-file"
+                type="file"                          
               ></input>
             </div>
           </div>
@@ -132,7 +133,7 @@ function Formulario({ onChange, form }) {
               <input
                 type="file"
                 onChange={onChange}
-                className="form-control"
+                className="form-control-file"
                 name="img2"
                 value={form.img2}
               ></input>
@@ -142,7 +143,7 @@ function Formulario({ onChange, form }) {
               <input
                 type="file"
                 onChange={onChange}
-                className="form-control"
+                className="form-control-file"
                 name="img3"
                 value={form.img3}
               ></input>
