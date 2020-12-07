@@ -1,10 +1,10 @@
 import React, { Fragment } from "react";
 import "./styles/Pagina.css";
-import emptyimg from '../Components/images/logoEmpty.png';
-import emptypremio from '../Components/images/PremioEmpty.png';
+
 
 function Pagina({fondo,tipo,NombreDesafio,FechaInicio,FechaFin,Objetivo,Instrucciones,Premios,img1,img2,img3,Link}) {
   const path ="https://play.tomi.digital/auth?code=";
+  const pathimage ="http://fsf.com.ar/principal/imagenesall";
     //definir una constante para trabajar con la cadena de texto /Iframe https://play.tomi.digital/auth?code=
     const Premioss = Premios; 
     const fondob = fondo;   
@@ -15,8 +15,10 @@ function Pagina({fondo,tipo,NombreDesafio,FechaInicio,FechaFin,Objetivo,Instrucc
     let imprimir = [];     
     imprimir=ArrayPremio.map((premio,i) => (<li key={i}>{premio}</li>));
     return imprimir;
-  }    
+  } 
 
+ 
+ 
   return (
     <Fragment>
       <style>{`body { background-color:${fondob};}`}</style>
@@ -27,7 +29,7 @@ function Pagina({fondo,tipo,NombreDesafio,FechaInicio,FechaFin,Objetivo,Instrucc
             <h1>{tipo || 'Bienvenido'}</h1>
             <img
               className="imagenevento"
-              src={img1 || emptyimg}
+              src={`${pathimage}/${img1}`}
               alt="imagen del evento"
               height="180px"
             />
@@ -50,13 +52,13 @@ function Pagina({fondo,tipo,NombreDesafio,FechaInicio,FechaFin,Objetivo,Instrucc
           <div className='paraimagen'>          
           <img
             className="imagenpremio"
-            src={img2 || emptypremio}
+            src={`${pathimage}/${img2}`}
             alt="Imagen Premio"
             height="170px"
           />
           <img
             className="imagenpremio"
-            src={img3 || emptypremio}
+            src={`${pathimage}/${img3}`}
             alt="Imagen Premio"
             height="170px"
           />

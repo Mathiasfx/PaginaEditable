@@ -1,4 +1,4 @@
-import React, {useState, Fragment } from "react";
+import React, {useState,useEffect, Fragment } from "react";
 import "./PaginaNew.css";
 import Navbar from "../Components/Navbar";
 import Pagina from "../Components/Pagina";
@@ -8,6 +8,15 @@ import Formulario from "../Components/Formulario"
 function PaginaNew() {
 
       //Iniciar internamente los valores
+
+ const [imagen1,setImagen1] = useState('logoEmpty.png');
+ const [imagen2,setImagen2] = useState('PremioEmpty.png');
+ const [imagen3,setImagen3] = useState('PremioEmpty.png');
+ const [colorpag,setColorpag] = useState('#0693E3');
+ const [cambia,setCambia] = useState('');
+
+
+      
 const [form,setform] = useState({
   fondo:'',
   tipo:'',
@@ -17,10 +26,7 @@ const [form,setform] = useState({
   Objetivo:'',
   Instrucciones:'',
   Premios:'',
-  Link:'',
-  img1:'',
-  img2:'',
-  img3:'',
+  Link:'',  
 });
 
     const handleChange = e =>{
@@ -30,14 +36,40 @@ const [form,setform] = useState({
          });
      };
 
+     const handleImagen1 = e =>{
+      setImagen1(e.target.files[0]);
+     }
+     const handleImagen2 = e =>{
+      setImagen2(e.target.files[0]);
+     }
+     const handleImagen3 = e =>{
+      setImagen3(e.target.files[0]);     
+     }
+   
+     const cambiarcolor = (color) =>{
+      form.fondo = color; 
+      setCambia(color);   
+
+    }
+
+    const styleform = {
+      background:'#fff'
+    };
+
+    useEffect(() => {
+      console.log('useefec')  
+      setColorpag(form.fondo);   
+    },[cambia]);
+
+
   return (
     <Fragment>
-      <style>{'#root { background-color: #fff; }'}</style>
+    
       <Navbar />
       <div className="container-fluid">
         
         <div className="row">
-          <div className="col-xs-12 col-md-8">
+          <div className="col-xs-12 col-md-8" style={{colorpag}}>
             <Pagina
              fondo={form.fondo} 
              tipo={form.tipo}
@@ -48,15 +80,23 @@ const [form,setform] = useState({
              Instrucciones={form.Instrucciones}
              Premios={form.Premios}
              Link={form.Link}
-             img1={form.img1}
-             img2={form.img2}
-             img3={form.img3}
+             img1={imagen1}
+             img2={imagen2}
+             img3={imagen3}
             />              
           </div>
-          <div className="col-xs-12 col-md-4">
+          <div className="col-xs-12 col-md-4" style={styleform}>
               <Formulario 
               onChange={handleChange}
-              form={form} />
+              onImage1={handleImagen1}
+              onImage2={handleImagen2}
+              onImage3={handleImagen3}
+              onColor={cambiarcolor}
+              form={form}
+              imagen1={imagen1}
+              imagen2={imagen2}
+              imagen3={imagen3}              
+              />
           </div>
         </div>
         

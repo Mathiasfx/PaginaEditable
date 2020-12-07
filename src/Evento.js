@@ -2,7 +2,7 @@ import React,{useState,useEffect,Fragment} from 'react'
 import Pagina from './Components/Pagina';
 import './Components/styles/Pagina.css';
 
-function Evento(name = "leer") {   
+function Evento(id) {   
     //Array de datas para Iterar 
     const [datas,setdatas] = useState({
       loading:true,
@@ -24,12 +24,15 @@ function Evento(name = "leer") {
     const [img2, setimg2] = useState("");
     const [img3, setimg3] = useState("");
     const [Link, setLink] = useState("");
+    
   
     //Evito el Loop infinito y solo llamo cuando carga la aplicacion
     useEffect(() => {    //Url Api me devuelve un JSON  
       const url =
-        "http://fsf.com.ar/principal/procesar.php?action=leer&id=1";
+        `http://fsf.com.ar/principal/procesar.php?action=leer&id=${id.id}`;
       //Fetch para leer el JSON de respuesta      
+      
+      
       const fetchdatas = async () =>{
         setdatas({loading:true, error:null});
         try{   
@@ -72,7 +75,7 @@ function Evento(name = "leer") {
       fetchdatas();
      
     
-    }, [name]);
+    }, [id]);
     if(datas.error){
       return `Error: ${datas.error.message}`;
     }

@@ -14,8 +14,10 @@ body {
 }
 
 h1 {
-  font-family: 'Anton', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   color: #242424;
+  font-weight: 800;
+  text-align: center;
 }
 
 

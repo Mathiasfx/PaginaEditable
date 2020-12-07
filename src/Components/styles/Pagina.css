@@ -25,6 +25,9 @@
   .imagenevento{
       padding: 2em;
   }
+  .imagenpremio{
+    margin: 0.8em;
+}
   .pagina__section-info {
     display: flex;
     flex-direction: column;
