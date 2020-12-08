@@ -17,6 +17,12 @@ function Pagina({fondo,tipo,NombreDesafio,FechaInicio,FechaFin,Objetivo,Instrucc
     return imprimir;
   } 
 
+  
+
+
+
+
+
  
  
   return (
@@ -27,11 +33,12 @@ function Pagina({fondo,tipo,NombreDesafio,FechaInicio,FechaFin,Objetivo,Instrucc
           <div className="header"></div>
           <div className="pagina_section-name">
             <h1>{tipo || 'Bienvenido'}</h1>
+           
             <img
               className="imagenevento"
               src={`${pathimage}/${img1}`}
               alt="imagen del evento"
-              height="180px"
+              height="180px"              
             />
           </div>
           <div className="pagina__section-info">

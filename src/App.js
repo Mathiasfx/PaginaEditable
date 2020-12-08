@@ -4,35 +4,20 @@ import Evento from './Evento';
 import Iframe from './pages/Iframe';
 import PaginaNew from'./pages/PaginaNew';
 
-
-
-
 function App() {
-
-  const [rutas,setrutas] = useState([]);
-  const array = ['/uno','/dos'];
-
-  useEffect(() => {      
-      if(array){
-        setrutas(array);
-      }else{
-        setrutas(['/Evento']);
-      }              
-  },[]);
-
-
-console.log(rutas);
-
-
 
  return (
     <Fragment>
        <Router>
        <Switch>        
           <Route exact path='/' render={()=>(window.location = "http://www.formosasoftwarefactory.com")}/>          
-          <Route path='/Formulario' exact component={PaginaNew} />    
+          <Route path='/Formulario' component={() => <PaginaNew id='1' />} />
+          <Route path='/Formulario-Colegio' component={() => <PaginaNew id='2' />} /> 
+          <Route path='/Formulario-Empresa' component={() => <PaginaNew id='3' />} />        
           <Route path='/Iframe' exact component={Iframe} />    
-          <Route path='/Evento' component={() => <Evento id='1' />} />        
+          <Route path='/Evento' component={() => <Evento id='1' />} />  
+          <Route path='/Colegio' component={() => <Evento id='2' />} />
+          <Route path='/Empresa' component={() => <Evento id='3' />} />      
         </Switch>
        </Router>
     </Fragment>

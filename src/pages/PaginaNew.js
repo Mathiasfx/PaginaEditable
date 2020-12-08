@@ -5,18 +5,17 @@ import Pagina from "../Components/Pagina";
 import Formulario from "../Components/Formulario"
 
 
-function PaginaNew() {
+function PaginaNew({id}) {
 
       //Iniciar internamente los valores
 
  const [imagen1,setImagen1] = useState('logoEmpty.png');
  const [imagen2,setImagen2] = useState('PremioEmpty.png');
  const [imagen3,setImagen3] = useState('PremioEmpty.png');
+ const temporal = 'logoEmpty.png';
  const [colorpag,setColorpag] = useState('#0693E3');
  const [cambia,setCambia] = useState('');
 
-
-      
 const [form,setform] = useState({
   fondo:'',
   tipo:'',
@@ -56,8 +55,7 @@ const [form,setform] = useState({
       background:'#fff'
     };
 
-    useEffect(() => {
-      console.log('useefec')  
+    useEffect(() => {       
       setColorpag(form.fondo);   
     },[cambia]);
 
@@ -80,9 +78,9 @@ const [form,setform] = useState({
              Instrucciones={form.Instrucciones}
              Premios={form.Premios}
              Link={form.Link}
-             img1={imagen1}
-             img2={imagen2}
-             img3={imagen3}
+             img1={temporal}
+             img2={temporal}
+             img3={temporal}
             />              
           </div>
           <div className="col-xs-12 col-md-4" style={styleform}>
@@ -95,7 +93,8 @@ const [form,setform] = useState({
               form={form}
               imagen1={imagen1}
               imagen2={imagen2}
-              imagen3={imagen3}              
+              imagen3={imagen3}
+              id={id}              
               />
           </div>
         </div>
